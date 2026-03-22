@@ -1,0 +1,362 @@
+/* Centered Modal Container */
+.medaea-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.6); /* Modern Slate blur */
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 20px;
+}
+
+.medaea-modal-card {
+  background: #ffffff;
+  width: 100%;
+  max-width: 650px;
+  border-radius: 20px;
+  box-shadow:
+    0 20px 25px -5px rgba(0, 0, 0, 0.1),
+    0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  max-height: 90vh; /* Keeps it from disappearing off screen */
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header with Step Indicator */
+/* Progress Track Line */
+.step-indicator-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+  position: relative;
+  padding: 0 5px;
+}
+
+/* The Background Line */
+.step-indicator-wrapper::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #e2e8f0; /* Gray line */
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+/* The Active (Teal) Line Progress */
+.step-indicator-wrapper::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  height: 2px;
+  background: var(--medaea-teal);
+  transform: translateY(-50%);
+  z-index: 1;
+  transition: width 0.3s ease;
+  /* This width is controlled by a CSS variable set in the component */
+  width: var(--progress-width, 0%);
+}
+
+.step-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #e2e8f0;
+  border: 2px solid #fff; /* White border makes it look clean over the line */
+  z-index: 2;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.step-dot.active {
+  background: var(--medaea-teal);
+  border-color: #fff;
+  transform: scale(1.2);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+}
+
+/* Body Content */
+.modal-scroll-area {
+  padding: 32px;
+  overflow-y: auto; /* Scroll only this part */
+  flex: 1 1 auto; /* Grows to fill space, but allows shrinking */
+  min-height: 0; /* Critical fix for flexbox scrolling */
+}
+
+.modal-header-container {
+  flex: 0 0 auto;
+  padding: 24px 32px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.grid-times {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.time-btn {
+  padding: 10px;
+  border: 1px solid #dee2e6;
+  background: white;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+  color: #495057;
+}
+
+.time-btn:hover:not(.active) {
+  border-color: var(--medaea-teal);
+  background: #f0fdfa;
+  color: var(--medaea-teal);
+}
+
+.time-btn.active {
+  background-color: var(--medaea-teal) !important;
+  color: white !important;
+  border-color: var(--medaea-teal) !important;
+  box-shadow: 0 4px 10px rgba(0, 128, 128, 0.2);
+  z-index: 1; /* Ensures it stays on top of borders */
+}
+
+.time-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 128, 128, 0.2);
+}
+
+/* Skeleton pulse for slots */
+.skeleton-pulse {
+  background: #eee;
+  border: none;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+.doctor-select-card {
+  display: flex;
+  align-items: center;
+  padding: 15px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.doctor-select-card.active {
+  border-color: var(--medaea-teal);
+  background: #f0fdfa;
+}
+
+.doctor-select-card.active .fa-circle-check {
+  color: var(--medaea-teal);
+}
+
+.modal-footer {
+  flex: 0 0 auto;
+  padding: 20px 32px;
+  border-top: 1px solid #f1f5f9;
+  background: #ffffff;
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  justify-content: center;
+  z-index: 10;
+}
+
+.modal-footer button {
+  width: 45% !important;
+}
+
+.fade-in {
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Selection Summary Card */
+.selection-summary-card {
+  background: #f8fafc;
+  border: 1px dashed #cbd5e1;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+.summary-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 13px;
+  margin-bottom: 4px;
+}
+
+.summary-label {
+  color: #2d3748;
+  font-weight: 600;
+}
+
+.summary-value {
+  color: #666666;
+  font-style: italic;
+}
+
+/* Search Bar */
+.search-wrapper {
+  position: relative;
+}
+
+.search-input {
+  border-radius: 10px;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  background-color: #f8fafc !important;
+}
+
+.search-input:focus {
+  border-color: var(--medaea-teal);
+  box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.1);
+}
+
+/* Doctor List */
+.doctor-list-container {
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.doctor-avatar-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--medaea-teal);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Scrollbar styling for the doctor list */
+.doctor-list-container::-webkit-scrollbar {
+  width: 5px;
+}
+.doctor-list-container::-webkit-scrollbar-thumb {
+  background: #e2e8f0;
+  border-radius: 10px;
+}
+
+/* Skeleton pulse animation */
+@keyframes skeleton-pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.skeleton-loading {
+  background: #f8f9fa;
+  border-color: #eee !important;
+  animation: skeleton-pulse 1.5s infinite ease-in-out;
+}
+
+.skeleton-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #e9ecef;
+}
+
+.skeleton-line {
+  height: 12px;
+  background: #e9ecef;
+  border-radius: 4px;
+}
+
+/* Scrollbar for doctor list */
+.doctor-list-container {
+  max-height: 350px;
+  overflow-y: auto;
+  padding-right: 5px;
+}
+
+.doctor-list-container::-webkit-scrollbar {
+  width: 4px;
+}
+
+.doctor-list-container::-webkit-scrollbar-thumb {
+  background: #ccc;
+  border-radius: 10px;
+}
+
+/* Selected state glow */
+.doctor-select-card.active {
+  border: 2px solid var(--medaea-teal) !important;
+  background-color: rgba(0, 128, 128, 0.05);
+  box-shadow: 0 4px 12px rgba(0, 128, 128, 0.1);
+}
+
+.search-container-loading {
+  position: relative;
+}
+
+.input-loader {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid var(--medaea-teal);
+  border-right-color: transparent;
+  border-radius: 50%;
+  display: inline-block;
+  animation: rotate-loader 0.75s linear infinite;
+}
+
+@keyframes rotate-loader {
+  from {
+    transform: translateY(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateY(-50%) rotate(360deg);
+  }
+}

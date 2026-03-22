@@ -1,0 +1,245 @@
+/* ── shared calendar sub-page styles ─────────────────────── */
+.cal-page { display: flex; flex-direction: column; height: 100%; min-height: 0; }
+
+/* page header (title + subtitle + actions) */
+.cal-header { padding: 16px 20px 0; background: #fff; }
+.cal-header h2 { font-size: 20px; font-weight: 700; color: #1a1a1a; margin-bottom: 2px; }
+.cal-header p  { font-size: 13px; color: #6b7280; margin-bottom: 12px; }
+.cal-header-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+
+/* tabs inside header */
+.cal-tabs { display: flex; gap: 2px; background: #f3f4f6; border-radius: 8px; padding: 3px; }
+.cal-tab { padding: 6px 16px; border-radius: 6px; font-size: 13px; font-weight: 500; background: none; border: none; cursor: pointer; color: #6b7280; transition: all 0.15s; white-space: nowrap; }
+.cal-tab.active { background: #fff; color: #1a1a1a; box-shadow: 0 1px 3px rgba(0,0,0,.1); }
+.cal-tab.primary.active { background: #0891b2; color: #fff; }
+
+/* nav month bar */
+.cal-nav-bar { display: flex; align-items: center; gap: 12px; padding: 12px 20px; background: #fff; border-bottom: 1px solid #e5e7eb; }
+.cal-month-label { font-size: 15px; font-weight: 600; color: #1a1a1a; min-width: 180px; text-align: center; }
+.cal-nav-btn { width: 28px; height: 28px; border: 1px solid #e5e7eb; border-radius: 6px; background: #fff; cursor: pointer; display: flex; align-items: center; justify-content: center; color: #6b7280; font-size: 12px; }
+.cal-nav-btn:hover { background: #f3f4f6; }
+
+/* stats row */
+.cal-stats { display: flex; gap: 0; border-bottom: 1px solid #e5e7eb; background: #fff; }
+.cal-stat { flex: 1; padding: 14px 20px; border-right: 1px solid #e5e7eb; }
+.cal-stat:last-child { border-right: none; }
+.cal-stat-val { font-size: 24px; font-weight: 700; color: #1a1a1a; line-height: 1; }
+.cal-stat-lbl { font-size: 11px; color: #6b7280; margin-top: 2px; }
+.cal-stat.teal  .cal-stat-val { color: #0891b2; }
+.cal-stat.orange .cal-stat-val { color: #ea580c; }
+.cal-stat.red    .cal-stat-val { color: #dc2626; }
+.cal-stat.purple .cal-stat-val { color: #9333ea; }
+.cal-stat.green  .cal-stat-val { color: #16a34a; }
+.cal-stat.amber  .cal-stat-val { color: #d97706; }
+
+/* generic action button */
+.btn-teal {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #0891b2; color: #fff; border: none; border-radius: 6px;
+  padding: 7px 16px; font-size: 13px; font-weight: 500; cursor: pointer;
+  transition: background 0.15s; text-decoration: none; white-space: nowrap;
+}
+.btn-teal:hover { background: #0e7490; }
+.btn-outline {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: #fff; color: #374151; border: 1px solid #e5e7eb; border-radius: 6px;
+  padding: 7px 14px; font-size: 13px; font-weight: 500; cursor: pointer;
+  transition: background 0.15s; white-space: nowrap;
+}
+.btn-outline:hover { background: #f3f4f6; }
+.btn-sm { padding: 4px 10px; font-size: 12px; }
+
+/* badge */
+.badge {
+  display: inline-flex; align-items: center; padding: 2px 8px;
+  border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 0.3px;
+}
+.badge.green  { background: #dcfce7; color: #15803d; }
+.badge.blue   { background: #dbeafe; color: #1d4ed8; }
+.badge.teal   { background: #ccfbf1; color: #0f766e; }
+.badge.orange { background: #ffedd5; color: #c2410c; }
+.badge.red    { background: #fee2e2; color: #991b1b; }
+.badge.purple { background: #ede9fe; color: #6d28d9; }
+.badge.gray   { background: #f3f4f6; color: #374151; }
+.badge.amber  { background: #fef3c7; color: #92400e; }
+.badge.indigo { background: #e0e7ff; color: #3730a3; }
+
+/* card */
+.cal-card {
+  background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; overflow: hidden; margin: 0;
+}
+
+/* staff member avatar */
+.staff-av {
+  width: 38px; height: 38px; border-radius: 50%; display: flex; align-items: center;
+  justify-content: center; color: #fff; font-size: 13px; font-weight: 700; flex-shrink: 0;
+}
+.staff-av-sm { width: 30px; height: 30px; font-size: 11px; }
+
+/* ── Clinic Calendar ─────────────────────────────────────── */
+.clinic-time-grid { flex: 1; overflow-y: auto; }
+.clinic-time-row { display: flex; min-height: 60px; border-bottom: 1px solid #f3f4f6; }
+.clinic-time-label { width: 80px; flex-shrink: 0; padding: 8px 12px; font-size: 11px; color: #9ca3af; text-align: right; border-right: 1px solid #e5e7eb; }
+.clinic-time-slot { flex: 1; position: relative; padding: 4px 8px; }
+.clinic-appt-block {
+  border-radius: 6px; padding: 8px 12px; margin-bottom: 4px; cursor: pointer;
+  transition: opacity 0.15s; border-left: 3px solid currentColor;
+}
+.clinic-appt-block:hover { opacity: 0.9; }
+.clinic-appt-time { font-size: 11px; font-weight: 600; margin-bottom: 2px; }
+.clinic-appt-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.clinic-appt-doc  { font-size: 11px; color: #6b7280; }
+.clinic-appt-badges { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 4px; }
+.clinic-badge { font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 4px; }
+
+/* "Schedule a visit" floating button */
+.schedule-visit-btn {
+  position: absolute; top: 0; right: 0;
+  background: #0891b2; color: #fff; border: none; border-radius: 6px;
+  padding: 8px 16px; font-size: 13px; font-weight: 500; cursor: pointer;
+}
+
+/* ── Staff Schedule cards ────────────────────────────────── */
+.staff-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 16px 20px; margin: 0 20px 12px; }
+.staff-card-header { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
+.staff-card-info { flex: 1; }
+.staff-card-name { font-size: 15px; font-weight: 700; color: #1a1a1a; }
+.staff-card-role { font-size: 12px; color: #6b7280; }
+.staff-card-contact { font-size: 12px; color: #6b7280; margin-top: 4px; }
+.staff-card-stats { text-align: right; }
+.staff-card-stat-val { font-size: 20px; font-weight: 700; color: #1a1a1a; line-height: 1; }
+.staff-card-stat-lbl { font-size: 10px; color: #9ca3af; }
+.staff-week-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.staff-day-cell { background: #f0fffe; border: 1px solid #ccfbf1; border-radius: 6px; padding: 8px 10px; }
+.staff-day-cell.off { background: #f9fafb; border-color: #f3f4f6; }
+.staff-day-cell.pto { background: #fff7ed; border-color: #fed7aa; }
+.staff-day-name { font-size: 10px; font-weight: 700; color: #6b7280; margin-bottom: 4px; text-transform: uppercase; }
+.staff-day-hours { font-size: 12px; font-weight: 600; color: #1a1a1a; }
+.staff-day-loc { font-size: 11px; color: #6b7280; }
+.staff-day-duty { font-size: 10px; font-weight: 600; color: #0891b2; margin-top: 2px; }
+.staff-day-duty.off { color: #9ca3af; }
+.staff-day-duty.pto { color: #ea580c; }
+
+/* ── Staff Schedule Week Grid ────────────────────────────── */
+.ss-grid-wrap { overflow-x: auto; flex: 1; }
+.ss-grid { min-width: 900px; }
+.ss-grid-header { display: grid; grid-template-columns: 200px repeat(7, 1fr); background: #f9fafb; border-bottom: 2px solid #e5e7eb; }
+.ss-grid-hcell { padding: 10px 12px; font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; letter-spacing: 0.5px; }
+.ss-grid-row { display: grid; grid-template-columns: 200px repeat(7, 1fr); border-bottom: 1px solid #f3f4f6; min-height: 90px; align-items: start; }
+.ss-grid-row:hover { background: #f9fafb; }
+.ss-member-cell { padding: 12px; display: flex; align-items: flex-start; gap: 10px; border-right: 1px solid #e5e7eb; }
+.ss-day-cell { padding: 8px 10px; border-right: 1px solid #f3f4f6; }
+.ss-shift-block { background: #dbeafe; border-left: 3px solid #3b82f6; border-radius: 4px; padding: 6px 8px; font-size: 11px; }
+.ss-shift-time { font-weight: 600; color: #1d4ed8; }
+.ss-shift-loc { color: #374151; }
+.ss-shift-pts { font-size: 10px; color: #6b7280; margin-top: 2px; }
+.ss-shift-off { font-size: 11px; color: #d1d5db; padding-top: 4px; }
+.ss-shift-pto { background: #fff7ed; border-left-color: #f97316; }
+.ss-shift-pto .ss-shift-time { color: #c2410c; }
+
+/* ── On-Call ─────────────────────────────────────────────── */
+.oc-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px; margin: 12px 20px; }
+.oc-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.oc-info { flex: 1; }
+.oc-name { font-size: 15px; font-weight: 700; color: #1a1a1a; }
+.oc-specialty { font-size: 12px; color: #6b7280; }
+.oc-phone { font-size: 12px; color: #6b7280; margin-top: 2px; }
+.oc-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+.oc-field { border: 1px solid #e5e7eb; border-radius: 8px; padding: 12px; }
+.oc-field-lbl { font-size: 10px; color: #9ca3af; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+.oc-field-val { font-size: 14px; font-weight: 600; color: #1a1a1a; }
+.oc-field-sub { font-size: 12px; color: #0891b2; margin-top: 2px; cursor: pointer; }
+.oc-field.calls  { background: #f0fdf4; border-color: #bbf7d0; }
+.oc-field.emerg  { background: #fef2f2; border-color: #fecaca; }
+
+/* ── Room Schedule ───────────────────────────────────────── */
+.room-timeline { flex: 1; overflow-x: auto; }
+.room-grid { min-width: 1400px; }
+.room-grid-header { display: flex; background: #f9fafb; border-bottom: 2px solid #e5e7eb; position: sticky; top: 0; z-index: 10; }
+.room-label-col { width: 160px; flex-shrink: 0; padding: 10px 12px; font-size: 11px; font-weight: 700; color: #6b7280; text-transform: uppercase; border-right: 1px solid #e5e7eb; }
+.room-hour-cell { flex: 1; min-width: 60px; text-align: center; padding: 10px 4px; font-size: 11px; color: #9ca3af; border-right: 1px solid #f3f4f6; }
+.room-row { display: flex; border-bottom: 1px solid #e5e7eb; min-height: 60px; align-items: center; }
+.room-row:hover { background: #f9fafb; }
+.room-name-cell { width: 160px; flex-shrink: 0; padding: 12px; border-right: 1px solid #e5e7eb; }
+.room-name { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.room-type { font-size: 11px; color: #6b7280; }
+.room-status-badge { margin-top: 4px; font-size: 9px; font-weight: 700; padding: 2px 8px; border-radius: 4px; display: inline-block; }
+.room-status-badge.available { background: #dcfce7; color: #15803d; }
+.room-status-badge.occupied  { background: #fee2e2; color: #991b1b; }
+.room-status-badge.reserved  { background: #dbeafe; color: #1d4ed8; }
+.room-status-badge.maintenance { background: #fef9c3; color: #92400e; }
+.room-slots { flex: 1; display: flex; position: relative; }
+.room-slot { flex: 1; min-width: 60px; border-right: 1px solid #f3f4f6; height: 60px; position: relative; }
+.room-appt-block {
+  position: absolute; top: 8px; border-radius: 6px; padding: 4px 8px;
+  background: #dbeafe; border: 1px solid #93c5fd; font-size: 10px; font-weight: 600; color: #1d4ed8;
+  overflow: hidden; white-space: nowrap; cursor: pointer; z-index: 5;
+}
+.room-appt-block:hover { opacity: 0.9; }
+
+/* ── PTO ─────────────────────────────────────────────────── */
+.pto-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px 20px; margin: 0 0 1px; }
+.pto-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.pto-info { flex: 1; }
+.pto-name { font-size: 14px; font-weight: 700; color: #1a1a1a; }
+.pto-role { font-size: 12px; color: #6b7280; }
+.pto-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+.pto-field-lbl { font-size: 10px; color: #9ca3af; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; }
+.pto-field-val { font-size: 13px; font-weight: 600; color: #1a1a1a; }
+.pto-reason { font-size: 12px; color: #6b7280; margin-top: 6px; }
+.pto-actions { display: flex; gap: 8px; justify-content: flex-end; margin-top: 12px; }
+.btn-approve { background: #16a34a; color: #fff; border: none; border-radius: 6px; padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer; }
+.btn-deny    { background: #dc2626; color: #fff; border: none; border-radius: 6px; padding: 6px 14px; font-size: 12px; font-weight: 600; cursor: pointer; }
+
+/* ── Schedule Templates ──────────────────────────────────── */
+.tmpl-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 16px 20px; }
+@media (max-width: 1100px) { .tmpl-grid { grid-template-columns: 1fr; } }
+.tmpl-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 20px; }
+.tmpl-card-title { font-size: 15px; font-weight: 700; color: #1a1a1a; margin-bottom: 4px; }
+.tmpl-card-desc { font-size: 12px; color: #6b7280; margin-bottom: 12px; }
+.tmpl-detail-row { display: flex; gap: 6px; align-items: flex-start; margin-bottom: 6px; font-size: 12px; color: #374151; }
+.tmpl-detail-icon { color: #9ca3af; width: 14px; margin-top: 1px; flex-shrink: 0; }
+.tmpl-card-footer { display: flex; gap: 8px; margin-top: 16px; padding-top: 12px; border-top: 1px solid #f3f4f6; align-items: center; }
+.tmpl-usage { font-size: 11px; color: #6b7280; margin-left: auto; }
+.btn-dup { background: #f3f4f6; color: #374151; border: none; border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+.btn-edit { background: #f3f4f6; color: #374151; border: none; border-radius: 6px; padding: 6px 12px; font-size: 12px; font-weight: 500; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; }
+.btn-del { background: none; border: none; color: #dc2626; cursor: pointer; padding: 6px 8px; border-radius: 6px; font-size: 14px; }
+.btn-del:hover { background: #fee2e2; }
+
+/* ── Availability Rules ──────────────────────────────────── */
+.rule-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 10px; padding: 18px 20px; margin: 0 0 1px; }
+.rule-header { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
+.rule-title { font-size: 14px; font-weight: 700; color: #1a1a1a; flex: 1; }
+.rule-desc { font-size: 12px; color: #6b7280; margin-bottom: 12px; }
+.rule-body { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.rule-field-lbl { font-size: 10px; color: #9ca3af; font-weight: 600; text-transform: uppercase; margin-bottom: 4px; display: flex; align-items: center; gap: 4px; }
+.rule-field-val { font-size: 12px; color: #374151; }
+.rule-footer { display: flex; align-items: center; gap: 8px; margin-top: 14px; padding-top: 10px; border-top: 1px solid #f3f4f6; }
+.rule-toggle { position: relative; display: inline-flex; align-items: center; cursor: pointer; }
+.rule-toggle-track { width: 40px; height: 22px; border-radius: 11px; background: #d1d5db; transition: background 0.2s; }
+.rule-toggle-track.on { background: #0891b2; }
+.rule-toggle-thumb { position: absolute; width: 16px; height: 16px; background: #fff; border-radius: 50%; left: 3px; top: 3px; transition: transform 0.2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.rule-toggle-track.on + .rule-toggle-thumb { transform: translateX(18px); }
+.rule-toggle-label { font-size: 11px; font-weight: 600; margin-left: 6px; }
+
+/* priority badge */
+.priority-badge { font-size: 10px; font-weight: 600; color: #6b7280; padding: 2px 6px; background: #f3f4f6; border-radius: 4px; }
+
+/* section content area */
+.cal-content { flex: 1; overflow-y: auto; background: #f1f5f9; }
+.cal-content-padded { padding: 16px 20px; display: flex; flex-direction: column; gap: 12px; }
+
+/* search + filter row */
+.search-filter-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.search-input-wrap { flex: 1; min-width: 180px; position: relative; }
+.search-input-wrap i { position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: #9ca3af; font-size: 13px; }
+.search-input-wrap input { width: 100%; padding: 7px 10px 7px 32px; border: 1px solid #e5e7eb; border-radius: 6px; font-size: 13px; outline: none; background: #fff; }
+.search-input-wrap input:focus { border-color: #0891b2; }
+
+/* week view nav row for staff schedule */
+.ss-week-nav { display: flex; align-items: center; gap: 10px; padding: 10px 20px; background: #fff; border-bottom: 1px solid #e5e7eb; flex-wrap: wrap; }
+.ss-week-label { font-size: 14px; font-weight: 600; color: #1a1a1a; min-width: 200px; }
+.ss-week-range { font-size: 12px; color: #6b7280; }
+
+/* scroll container for list pages */
+.cal-list-scroll { flex: 1; overflow-y: auto; padding: 12px 20px; display: flex; flex-direction: column; gap: 8px; background: #f1f5f9; }

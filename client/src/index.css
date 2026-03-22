@@ -1,0 +1,319 @@
+/* Bootstrap and FontAwesome are loaded via CDN in index.html */
+
+:root {
+  --sb-width: 220px;
+  --sb-collapsed: 56px;
+  --topbar-height: 56px;
+  --breadcrumb-height: 42px;
+  --medaea-teal: #00bba7;
+  --medaea-cyan: #0891b2;
+  --border-color: #e5e7eb;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f1f5f9;
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════
+   MOBILE SIDEBAR OVERLAY
+══════════════════════════════════════ */
+#sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.45);
+  z-index: 199;
+  backdrop-filter: blur(1px);
+}
+#sidebar-overlay.active {
+  display: block;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — ≤ 1100px
+══════════════════════════════════════ */
+@media (max-width: 1100px) {
+  .patient-table th:nth-child(3),
+  .patient-table td:nth-child(3) {
+    display: none;
+  }
+  .appt-desc {
+    display: none;
+  }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — ≤ 900px
+══════════════════════════════════════ */
+@media (max-width: 900px) {
+  .files-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .privacy-grid {
+    grid-template-columns: 1fr;
+  }
+  .ins-grid {
+    grid-template-columns: 1fr;
+  }
+  .staff-sched,
+  .staff-col-sched {
+    display: none;
+  }
+  .patient-table th:nth-child(4),
+  .patient-table td:nth-child(4) {
+    display: none;
+  }
+  .pto-stats {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .pto-item-body {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — ≤ 768px  MOBILE
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  #sidebar {
+    width: 240px !important;
+    transform: translateX(-100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 300;
+    box-shadow: none;
+    overflow-y: auto;
+  }
+  #sidebar.collapsed {
+    width: 240px !important;
+    transform: translateX(-100%);
+  }
+  #sidebar.mobile-open {
+    transform: translateX(0);
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.18);
+  }
+  #sidebar.mobile-open .sbn-label,
+  #sidebar.mobile-open .sbn-arrow,
+  #sidebar.mobile-open .sb-logo-text {
+    display: flex !important;
+  }
+  #sidebar.mobile-open .sbn-item {
+    justify-content: flex-start !important;
+    padding: 8px 12px !important;
+  }
+  #sidebar.mobile-open .sb-logo {
+    justify-content: flex-start !important;
+    padding: 12px 14px !important;
+  }
+  #sidebar.mobile-open .sb-toggle {
+    display: flex !important;
+  }
+
+  #topbar {
+    left: 0 !important;
+    padding: 0 10px;
+    gap: 6px;
+  }
+  #topbar.sb-col {
+    left: 0 !important;
+  }
+
+  #sb-open-btn {
+    display: flex !important;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .tb-nav {
+    display: none !important;
+  }
+  .tb-search {
+    flex: 1;
+    max-width: none;
+    min-width: 0;
+  }
+  .tb-search input {
+    font-size: 12px;
+  }
+  .tb-brand-name {
+    display: none;
+  }
+  .ai-badge {
+    display: none;
+  }
+  .user-name-txt,
+  .user-role-txt {
+    display: none;
+  }
+
+  #breadcrumb-bar {
+    left: 0 !important;
+  }
+  #breadcrumb-bar.sb-col {
+    left: 0 !important;
+  }
+
+  #main-content {
+    margin-left: 0 !important;
+  }
+  #main-content.sb-col {
+    margin-left: 0 !important;
+  }
+
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .pto-item {
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 14px;
+  }
+  .pto-item-body {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px;
+  }
+  .pto-item-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .pto-hd {
+    padding: 14px;
+  }
+  .pto-hd-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .btn-request-pto,
+  .btn-export {
+    font-size: 12px;
+    padding: 6px 10px;
+  }
+
+  .content-wrap {
+    flex-direction: column;
+  }
+  .left-menu {
+    width: 100%;
+  }
+  .files-grid {
+    grid-template-columns: 1fr;
+  }
+  .pat-chips {
+    gap: 6px;
+  }
+  .page-nav {
+    overflow-x: auto;
+  }
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+  .search-box input {
+    width: 120px;
+  }
+  .pto-stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-card {
+    border-radius: 8px;
+  }
+  .cw {
+    padding: 10px;
+  }
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — ≤ 480px  SMALL PHONES
+══════════════════════════════════════ */
+@media (max-width: 767px) {
+  .pto-item-body {
+    grid-template-columns: 1fr !important;
+  }
+  .pto-item-body > div {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .pto-title {
+    font-size: 14px;
+  }
+  .pto-month {
+    font-size: 11px;
+  }
+  .pto-name {
+    font-size: 13px;
+  }
+  .pto-item {
+    padding: 12px 10px;
+  }
+  .content-area {
+    padding: 16px 8px;
+  }
+  .panel-card {
+    padding: 24px 16px;
+  }
+  .main-panel {
+    width: 100%;
+  }
+  .insurance-card .d-flex.gap-3.mt-2 {
+    flex-direction: column;
+  }
+  .ec-card {
+    padding: 16px;
+  }
+  .msg-item {
+    padding: 14px 12px;
+  }
+  .panel-card .d-flex.align-items-center.justify-content-between,
+  .panel-card .d-flex.align-items-start.justify-content-between {
+    flex-direction: column;
+    align-items: flex-start !important;
+    gap: 8px;
+    margin-bottom: 16px !important;
+  }
+  .panel-card-sub {
+    margin-bottom: 12px;
+  }
+  .insurance-card {
+    margin-top: 16px;
+    margin-bottom: 0;
+  }
+  .tbl-hd {
+    padding: 16px 12px;
+  }
+  .btn-add-patient {
+    padding: 7px 10px;
+  }
+  .dash-hd {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .rs-hd {
+    padding: 16px 12px;
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}

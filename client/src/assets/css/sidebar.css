@@ -1,0 +1,177 @@
+/* ═══ SIDEBAR ═══ */
+#sidebar {
+  width: 220px;
+  min-height: 100vh;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  transition:
+    width 0.25s,
+    transform 0.25s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 1px 0 3px rgba(0, 0, 0, 0.04);
+}
+#sidebar.collapsed {
+  width: 56px;
+}
+.sb-logo {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 12px 14px;
+  border-bottom: 1px solid #f0f0f0;
+  min-height: 56px;
+  flex-shrink: 0;
+}
+.sb-logo-icon {
+  width: 30px;
+  height: 30px;
+  background: #00bba7;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  flex-shrink: 0;
+}
+.sb-logo-text {
+  color: #111827;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  flex: 1;
+}
+.sb-toggle {
+  background: none;
+  border: none;
+  color: #9ca3af;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 0px;
+  width: 24px;
+  flex-shrink: 0;
+}
+.sb-toggle img {
+  width: 16px;
+}
+.sb-toggle:hover {
+  color: #374151;
+}
+.sb-nav {
+  padding: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+.sb-nav .sbn-fav {
+  border-bottom: 1px #eee solid;
+}
+.sbn-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  color: #6b7280;
+  font-size: 13.5px;
+  cursor: pointer;
+  transition:
+    background 0.12s,
+    color 0.12s;
+  white-space: nowrap;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+}
+.sbn-item:hover {
+  background: #eaf5f7;
+  color: #111827;
+}
+.sbn-item.active {
+  background: #0891b2;
+  color: #fff;
+  font-weight: 500;
+}
+.sbn-item.active .sbn-icon img,
+.sb-subnav .sbn-item.active .sbn-label img {
+  filter: brightness(0) invert(1);
+}
+.sbn-icon {
+  width: 18px;
+  text-align: center;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+.sbn-label {
+  flex: 1;
+  display: flex;
+  gap: 8px;
+}
+.sbn-arrow {
+  display: inline-block;
+  font-size: 10px;
+  color: #d1d5db;
+  transition: transform 0.2s ease;
+  margin-left: auto;
+}
+.sbn-item.active .sbn-arrow {
+  color: #ffffff !important;
+}
+.sbn-arrow.rotate-90 {
+  transform: rotate(90deg);
+}
+.sb-subnav {
+  background: #f9fafb;
+  display: none;
+  margin-left: 8px;
+  border-left: 2px #d1d5dc solid;
+}
+.sb-subnav .sbn-item {
+  padding-left: 16px;
+  font-size: 12.5px;
+}
+.sb-subnav .sbn-item i:hover {
+  color: #f0b100;
+}
+.sb-subnav .sbn-item.active {
+  color: #fff;
+  background: #0891b2;
+}
+.sb-subnav .sbn-item .sbn-label img {
+  width: 15px;
+}
+#sidebar.collapsed .sbn-label,
+#sidebar.collapsed .sbn-arrow,
+#sidebar.collapsed .sb-logo-text {
+  display: none !important;
+}
+#sidebar.collapsed .sb-logo {
+  justify-content: center;
+  padding: 12px 10px;
+}
+#sidebar.collapsed .sb-toggle {
+  display: none;
+}
+#sidebar.collapsed .sbn-item {
+  justify-content: center;
+  padding: 10px;
+}
+#sidebar.collapsed .sb-subnav {
+  display: none !important;
+}
+.fa-star:hover {
+  color: #f0b100 !important; /* Medical dashboard gold */
+}
+.fa-star.text-warning {
+  color: #f0b100 !important; /* Medical dashboard gold */
+}
+.text-muted {
+  color: #d1d5db; /* Light gray for unselected */
+}

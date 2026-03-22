@@ -1,0 +1,13 @@
+#main-content {
+  margin-left: 220px;
+  padding-top: 98px;
+  transition: margin-left 0.25s;
+  min-height: 100vh;
+  padding-bottom: 40px;
+}
+#main-content.sb-col {
+  margin-left: 56px;
+}
+.cw {
+  padding: 18px;
+}

@@ -1,0 +1,354 @@
+/* ===== FONTS ===== */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    Oxygen,
+    Ubuntu,
+    Cantarell,
+    sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+/* ===== BUTTONS ===== */
+.btn-primary-custom {
+  background-color: #00a896;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+  cursor: pointer;
+}
+
+.btn-primary-custom:hover {
+  background-color: #008c7a;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 168, 150, 0.3);
+}
+
+.btn-primary-custom:active {
+  transform: translateY(0);
+}
+
+.btn-secondary-custom {
+  background-color: transparent;
+  border: 2px solid #00a896;
+  color: #00a896;
+  font-weight: 600;
+  font-size: 16px;
+  padding: 12px 24px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  width: 100%;
+  cursor: pointer;
+}
+
+.btn-secondary-custom:hover {
+  background-color: #00a896;
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 168, 150, 0.2);
+}
+
+/* ===== FORM INPUTS ===== */
+.form-control-custom {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 15px;
+  color: #333;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.form-control-custom::placeholder {
+  color: #999;
+  font-size: 14px;
+}
+
+.form-control-custom:focus {
+  outline: none;
+  border-color: #00a896;
+  box-shadow: 0 0 0 3px rgba(0, 168, 150, 0.1);
+}
+
+.form-label-custom {
+  font-size: 13px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  display: block;
+}
+
+/* ===== PASSWORD INPUT WITH TOGGLE ===== */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 30px; /* Moved in slightly to ensure it stays inside borders */
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #999;
+  font-size: 16px; /* Adjusted size slightly for better fit */
+  background: none;
+  border: none;
+  padding: 8px; /* Added padding makes the clickable area easier to hit */
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s ease;
+}
+
+.password-toggle:hover {
+  color: #1a1a1a; /* Darker color on hover */
+}
+
+/* Ensure focus outline doesn't look weird on the button */
+.password-toggle:focus {
+  outline: none;
+  color: #00a896;
+}
+
+/* ===== CHECKBOX ===== */
+.checkbox-custom {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.checkbox-custom input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  cursor: pointer;
+  accent-color: #00a896;
+}
+
+.checkbox-custom label {
+  font-size: 14px;
+  color: #666;
+  cursor: pointer;
+  margin: 0;
+}
+
+/* ===== LINKS ===== */
+.link-primary {
+  color: #00a896 !important;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.link-primary:hover {
+  color: #008c7a;
+  text-decoration: underline;
+}
+
+/* ===== CARDS ===== */
+.card-custom {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  padding: 40px;
+  border: none;
+}
+
+/* ===== DIVIDER ===== */
+.divider-custom {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 24px 0;
+  color: #999;
+  font-size: 14px;
+}
+
+.divider-custom::before,
+.divider-custom::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.divider-custom::before {
+  margin-right: 16px;
+}
+
+.divider-custom::after {
+  margin-left: 16px;
+}
+
+/* ===== ALERT/NOTICE BAR ===== */
+.alert-custom {
+  background-color: #fff8e1;
+  border: 1px solid #ffc107;
+  border-radius: 0;
+  color: #856404;
+  padding: 12px 20px;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.alert-custom .alert-icon {
+  color: #ffc107;
+  font-size: 20px;
+  margin-right: 12px;
+}
+
+.alert-custom .close-btn {
+  background: none;
+  border: none;
+  color: #856404;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 0;
+  line-height: 1;
+}
+
+.alert-custom .close-btn:hover {
+  color: #533f03;
+}
+
+/* ===== LOGO/ICON ===== */
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  background-color: #00a896;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.logo-icon::before {
+  content: "";
+  width: 24px;
+  height: 24px;
+  background-color: #ffffff;
+  border-radius: 4px;
+}
+
+/* ===== HEADINGS ===== */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+/* ===== TEXT UTILITIES ===== */
+.text-muted-custom {
+  color: #666;
+  font-size: 14px;
+}
+
+.text-small {
+  font-size: 12px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ===== FOOTER TEXT ===== */
+.footer-text {
+  font-size: 11px;
+  color: #999;
+  line-height: 1.5;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 576px) {
+  .card-custom {
+    padding: 24px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  .btn-primary-custom,
+  .btn-secondary-custom {
+    font-size: 15px;
+    padding: 12px 20px;
+  }
+}
+
+/* ===== FORM ERROR STATES ===== */
+.form-control-custom.has-error {
+  border-color: #dc3545; /* Red border */
+  background-image: none; /* Remove default browser validation icons if any */
+}
+
+.form-control-custom.has-error:focus {
+  box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1); /* Red glow on focus */
+}
+
+.form-error-message {
+  color: #dc3545;
+  font-size: 12px;
+  margin-top: 6px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  animation: fadeIn 0.3s ease;
+}
+
+.form-error-message::before {
+  content: "\f06a"; /* FontAwesome exclamation circle */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  margin-right: 6px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
