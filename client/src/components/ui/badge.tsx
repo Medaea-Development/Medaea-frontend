@@ -1,35 +1,52 @@
-import { type VariantProps, cva } from "class-variance-authority";
-import * as React from "react";
-import { cn } from "../../lib/utils";
+import React from "react";
 
-const badgeVariants = cva(
-  "inline-flex items-center rounded-md border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2",
-  {
-    variants: {
-      variant: {
-        default:
-          "border-transparent bg-primary text-primary-foreground shadow hover:bg-primary/80",
-        secondary:
-          "border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        destructive:
-          "border-transparent bg-destructive text-destructive-foreground shadow hover:bg-destructive/80",
-        outline: "text-foreground",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-    },
-  },
-);
+// Define the types of badges supported by your CSS
+export type BadgeVariant = "visits" | "calls" | "tasks" | "default";
 
-export interface BadgeProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof badgeVariants> {}
-
-function Badge({ className, variant, ...props }: BadgeProps) {
-  return (
-    <div className={cn(badgeVariants({ variant }), className)} {...props} />
-  );
+interface BadgeProps {
+  variant?: BadgeVariant;
+  icon?: string;
+  label: string;
+  count?: number;
+  className?: string;
+  onClick?: () => void;
 }
 
-export { Badge, badgeVariants };
+const Badge: React.FC<BadgeProps> = ({
+  variant = "default",
+  icon,
+  label,
+  count,
+  className = "",
+  onClick,
+}) => {
+  // Determine default icon if none provided based on variant
+  const getIcon = () => {
+    if (icon) return icon;
+    switch (variant) {
+      case "visits":
+        return "fas fa-user";
+      case "calls":
+        return "fas fa-phone";
+      case "tasks":
+        return "fas fa-calendar-check";
+      default:
+        return "fas fa-circle";
+    }
+  };
+
+  return (
+    <div
+      className={`event-badge ${variant} ${className}`}
+      onClick={onClick}
+      role={onClick ? "button" : undefined}
+      style={onClick ? { cursor: "pointer" } : {}}
+    >
+      <i className={getIcon()}></i>
+      <span>{label}</span>
+      {count !== undefined && <span className="event-count">{count}</span>}
+    </div>
+  );
+};
+
+export default Badge;
